@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wine HOUSE González - Vinería y Selección de Bebidas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --bg-oscuro: #1a0520;
+            --bg-morado: #3b1443;
+            --bg-tarjeta: #260a2e;
+            --lila-claro: #e0aaff;
+            --lila-acento: #c77dff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle, var(--bg-morado) 0%, var(--bg-oscuro) 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .navbar-vino {
+            background-color: rgba(20, 4, 26, 0.94);
+            border-bottom: 1px solid rgba(224, 170, 255, 0.3);
+        }
+
+        .navbar-vino .nav-link {
+            color: #ffffff;
+            transition: color 0.25s ease;
+        }
+
+        .navbar-vino .nav-link:hover,
+        .navbar-vino .nav-link:focus {
+            color: var(--lila-claro);
+        }
+
+        .titulo-lila {
+            color: var(--lila-claro);
+        }
+
+        .subtitulo-vino {
+            color: var(--lila-acento);
+        }
+
+        .vino-card {
+            background-color: var(--bg-tarjeta);
+            color: #ffffff;
+            border: 1.5px solid rgba(224, 170, 255, 0.35);
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 28px rgba(199, 125, 255, 0.28);
+        }
+
+        .logo-empresa {
+            max-width: 150px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .producto-img {
+            height: 210px;
+            object-fit: cover;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            border-bottom: 1px solid rgba(224, 170, 255, 0.25);
+        }
+
+        .btn-vino {
+            background-color: var(--lila-acento);
+            border-color: var(--lila-acento);
+            color: var(--bg-oscuro);
+            font-weight: bold;
+            border-radius: 10px;
+        }
+
+        .btn-vino:hover,
+        .btn-vino:focus {
+            background-color: var(--lila-claro);
+            border-color: var(--lila-claro);
+            color: var(--bg-oscuro);
+        }
+
+        .btn-vino-outline {
+            border: 1.5px solid var(--lila-claro);
+            color: var(--lila-claro);
+            border-radius: 10px;
+        }
+
+        .btn-vino-outline:hover,
+        .btn-vino-outline:focus {
+            background-color: var(--lila-claro);
+            color: var(--bg-oscuro);
+        }
+
+        .lista-variedades .list-group-item {
+            background-color: var(--bg-tarjeta);
+            color: #ffffff;
+            border-color: rgba(224, 170, 255, 0.22);
+        }
+
+        .accordion-vino .accordion-item {
+            background-color: var(--bg-tarjeta);
+            color: #ffffff;
+            border-color: rgba(224, 170, 255, 0.28);
+        }
+
+        .accordion-vino .accordion-button {
+            background-color: #340e3f;
+            color: var(--lila-claro);
+        }
+
+        .accordion-vino .accordion-button:not(.collapsed) {
+            background-color: #481457;
+            color: #ffffff;
+        }
+
+        .form-control {
+            background-color: rgba(26, 5, 32, 0.82);
+            border: 1px solid rgba(224, 170, 255, 0.35);
+            color: #ffffff;
+        }
+
+        .form-control:focus {
+            background-color: rgba(26, 5, 32, 0.95);
+            border-color: var(--lila-claro);
+            box-shadow: 0 0 8px rgba(224, 170, 255, 0.25);
+            color: #ffffff;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .resultado-consulta {
+            background-color: var(--bg-tarjeta);
+            border: 1.5px solid var(--lila-claro);
+            border-radius: 16px;
+        }
+
+        .footer-vino {
+            background-color: rgba(20, 4, 26, 0.94);
+            border-top: 1px solid rgba(224, 170, 255, 0.25);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark navbar-vino sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold titulo-lila" href="#inicio">
+                <i class="bi bi-cup-straw me-2"></i>Wine HOUSE González
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+                aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuPrincipal">
+                <div class="navbar-nav ms-auto gap-md-2">
+                    <a class="nav-link" href="#inicio">Inicio</a>
+                    <a class="nav-link" href="#catalogo">Catálogo</a>
+                    <a class="nav-link" href="#contacto">Contáctanos</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="container py-4">
+
+
+        <header id="inicio" class="vino-card p-4 p-md-5 mb-4">
+            <div class="row g-4 align-items-center">
+
+
+                <div class="col-12 col-md-6 text-center text-md-start">
+                    <img src="logo.jpg" alt="Logotipo de Wine HOUSE González" class="logo-empresa d-block mx-auto mb-3">
+                    <h1 class="display-6 fw-bold mb-1">Wine HOUSE González</h1>
+                    <h2 class="h4 titulo-lila mb-3">Vinería y selección de bebidas</h2>
+                    <p class="lead mb-3">
+                        Somos <strong>Wine HOUSE González</strong>, una vinería enfocada en ofrecer bebidas de la mejor calidad.
+                        Contamos con una cuidada selección de marcas reconocidas como Colón, Catena Zapata, Luigi Bosca,
+                        Rutini, Enamorada y Trumpeter. Nos especializamos en brindar la mejor experiencia en vinos tintos,
+                        blancos, rosados y dulces para todos los gustos.
+                        Tambien recorda que podes conseguir vockas, licores o cualquier vevida fuerte en nuestra casa.
+                    </p>
+                    <div class="d-flex justify-content-center justify-content-md-start flex-wrap gap-2">
+                        <a href="#catalogo" class="btn btn-vino">Ver catálogo</a>
+                        <a href="#contacto" class="btn btn-vino-outline">Ir a Contáctanos</a>
+                    </div>
+                </div>
+
+
+                <div id="contacto" class="col-12 col-md-6">
+                    <div class="p-3 p-md-4 rounded" style="background-color: rgba(26, 5, 32, 0.72); border: 1px solid rgba(224, 170, 255, 0.25);">
+                        <h2 class="h4 titulo-lila mb-3">Contáctanos</h2>
+
+                        <label for="nombreContacto" class="form-label">Nombre</label>
+                        <input id="nombreContacto" class="form-control mb-2" type="text" autocomplete="given-name" placeholder="Tu nombre">
+
+                        <label for="apellidoContacto" class="form-label">Apellido</label>
+                        <input id="apellidoContacto" class="form-control mb-2" type="text" autocomplete="family-name" placeholder="Tu apellido">
+
+                        <label for="telefonoContacto" class="form-label">Número de teléfono</label>
+                        <input id="telefonoContacto" class="form-control mb-2" type="tel" autocomplete="tel" placeholder="Ej: 388 000 0000">
+
+                        <label for="mensajeContacto" class="form-label">Consulta</label>
+                        <textarea id="mensajeContacto" class="form-control mb-3" rows="2" placeholder="Contanos qué vino o consulta tenés"></textarea>
+
+                        <button type="button" class="btn btn-vino w-100" onclick="mostrarConsultaAbajo()">Consultar</button>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+
+        
+        <section id="catalogo" class="mb-5">
+            <h2 class="subtitulo-vino mb-3">Catálogo destacado</h2>
+            <div class="row g-3">
+                <!-- Producto 1 -->
+                <div class="col-12 col-md-4">
+                    <article class="card vino-card producto-card h-100">
+                        <img src="producto 1.jpg" class="card-img-top producto-img" alt="Vino tinto de selección"
+                            data-bs-toggle="modal" data-bs-target="#modalImagenProducto">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-2">
+                                <span class="badge text-bg-success">Destacado</span>
+                            </div>
+                            <h3 class="h5 card-title titulo-lila">Vinos Tintos (Rutini / Catena Zapata)</h3>
+                            <p class="card-text">
+                                Etiquetas de cuerpo y estructura ideales para carnes, reuniones y celebraciones especiales.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto pt-3" style="border-top: 1px solid rgba(224, 170, 255, 0.2);">
+                                <span class="fw-bold titulo-lila">Consultar</span>
+                                <a href="#contacto" class="btn btn-vino btn-sm">Consultar</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                
+                <div class="col-12 col-md-4">
+                    <article class="card vino-card producto-card h-100">
+                        <img src="producto 2.jpg" class="card-img-top producto-img" alt="Vino blanco y rosado"
+                            data-bs-toggle="modal" data-bs-target="#modalImagenProducto">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-2">
+                                <span class="badge text-bg-light text-dark">Fresco</span>
+                            </div>
+                            <h3 class="h5 card-title titulo-lila">Vinos Blancos y Rosados (Luigi Bosca / Trumpeter)</h3>
+                            <p class="card-text">
+                                Opciones frescas, aromáticas y equilibradas, pensadas para tardes al aire libre y maridajes livianos.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto pt-3" style="border-top: 1px solid rgba(224, 170, 255, 0.2);">
+                                <span class="fw-bold titulo-lila">Consultar</span>
+                                <a href="#contacto" class="btn btn-vino btn-sm">Consultar</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                
+                <div class="col-12 col-md-4">
+                    <article class="card vino-card producto-card h-100">
+                        <img src="producto 3.jpg" class="card-img-top producto-img" alt="Vino dulce de alta calidad"
+                            data-bs-toggle="modal" data-bs-target="#modalImagenProducto">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-2">
+                                <span class="badge text-bg-warning text-dark">Selección</span>
+                            </div>
+                            <h3 class="h5 card-title titulo-lila">Vinos Dulces (Colón / Enamorada)</h3>
+                            <p class="card-text">
+                                Variedades suaves y frutadas de alta calidad, ideales para postres, brindis o regalos.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto pt-3" style="border-top: 1px solid rgba(224, 170, 255, 0.2);">
+                                <span class="fw-bold titulo-lila">Consultar</span>
+                                <a href="#contacto" class="btn btn-vino btn-sm">Consultar</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                
+                <div class="col-12 col-md-4">
+                    <article class="card vino-card producto-card h-100">
+                        <img src="producto 4.jpg" class="card-img-top producto-img" alt="Sky sabor chicle"
+                            data-bs-toggle="modal" data-bs-target="#modalImagenProducto">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-2">
+                                <span class="badge text-bg-info text-dark">Original</span>
+                            </div>
+                            <h3 class="h5 card-title titulo-lila">Sky Sabor Chicle</h3>
+                            <p class="card-text">
+                                Bebida dulce y divertida con todo el sabor clásico a chicle, ideal para previas, tragos frescos y reuniones.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto pt-3" style="border-top: 1px solid rgba(224, 170, 255, 0.2);">
+                                <span class="fw-bold titulo-lila">Consultar</span>
+                                <a href="#contacto" class="btn btn-vino btn-sm">Consultar</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                
+                <div class="col-12 col-md-4">
+                    <article class="card vino-card producto-card h-100">
+                        <img src="producto 5.jpg" class="card-img-top producto-img" alt="Licor de menta Cusenier"
+                            data-bs-toggle="modal" data-bs-target="#modalImagenProducto">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-2">
+                                <span class="badge text-bg-success">Clásico</span>
+                            </div>
+                            <h3 class="h5 card-title titulo-lila">Licor de Menta (Cusenier)</h3>
+                            <p class="card-text">
+                                Licor refrescante de menta con un toque dulce y herbal, perfecto para tomar bien frío, con hielo o en coctelería.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto pt-3" style="border-top: 1px solid rgba(224, 170, 255, 0.2);">
+                                <span class="fw-bold titulo-lila">Consultar</span>
+                                <a href="#contacto" class="btn btn-vino btn-sm">Consultar</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+
+                <div class="col-12 col-md-4">
+                    <article class="card vino-card producto-card h-100">
+                        <img src="producto 6.jpg" class="card-img-top producto-img" alt="Ron Havana Club"
+                            data-bs-toggle="modal" data-bs-target="#modalImagenProducto">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-2">
+                                <span class="badge text-bg-warning text-dark">Destacado</span>
+                            </div>
+                            <h3 class="h5 card-title titulo-lila">Ron Havana Club</h3>
+                            <p class="card-text">
+                                Ron de carácter intenso y versátil, ideal para preparar tragos clásicos o disfrutar en encuentros especiales.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto pt-3" style="border-top: 1px solid rgba(224, 170, 255, 0.2);">
+                                <span class="fw-bold titulo-lila">Consultar</span>
+                                <a href="#contacto" class="btn btn-vino btn-sm">Consultar</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        </section>
+        
+     
+        <section class="row g-4 mb-4">
+            <div class="col-12 col-md-6">
+                <h2 class="h4 subtitulo-vino mb-3">Nuestra variedad de vinos</h2>
+                <ul class="list-group lista-variedades">
+                    <li class="list-group-item"> Vinos Tintos</li>
+                    <li class="list-group-item"> Vinos Blancos</li>
+                    <li class="list-group-item"> Vinos Rosados</li>
+                    <li class="list-group-item"> Vinos Dulces de Alta Calidad</li>
+                    <li class="list-group-item"> Y algun vodka de tu especialidad</li>
+                    <li class="list-group-item"> Todo esto y mas podes conseguir en nuestro local</li>
+                </ul>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <h2 class="h4 subtitulo-vino mb-3">Preguntas frecuentes</h2>
+                <div class="accordion accordion-vino" id="preguntasVinos">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="tituloMarcas">
+                            <button class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#respuestaMarcas"
+                                aria-expanded="false" aria-controls="respuestaMarcas">
+                                ¿Qué marcas trabajan?
+                            </button>
+                        </h3>
+                        <div id="respuestaMarcas" class="accordion-collapse collapse"
+                            aria-labelledby="tituloMarcas" data-bs-parent="#preguntasVinos">
+                            <div class="accordion-body">
+                                Trabajamos con marcas como Colón, Catena Zapata, Luigi Bosca, Rutini, Enamorada y Trumpeter. Tambien recorda que podes conseguir vockas, licores o cualquier vevida fuerte en nuestra casa.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="tituloConsultas">
+                            <button class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#respuestaConsultas"
+                                aria-expanded="false" aria-controls="respuestaConsultas">
+                                ¿Cómo consulto precios y disponibilidad?
+                            </button>
+                        </h3>
+                        <div id="respuestaConsultas" class="accordion-collapse collapse"
+                            aria-labelledby="tituloConsultas" data-bs-parent="#preguntasVinos">
+                            <div class="accordion-body">
+                                Tocá cualquier botón de <strong>Consultar</strong> o completá el formulario de <strong>Contáctanos</strong>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resumen-consulta" class="resultado-consulta p-4 mt-5" hidden>
+            <h2 class="h4 titulo-lila mb-3">Consulta realizada</h2>
+            <p class="mb-2"><strong>Nombre y apellido:</strong> <span id="outNombreApellido"></span></p>
+            <p class="mb-2"><strong>Número de teléfono:</strong> <span id="outTelefono"></span></p>
+            <p class="mb-0"><strong>Consulta:</strong> <span id="outConsulta"></span></p>
+        </section>
+
+    </main>
+
+    <footer class="footer-vino py-3 text-center mt-4">
+        <div class="container">
+            <p class="mb-0 small titulo-lila">
+                <strong>Wine HOUSE González</strong> — Vinería y selección de bebidas.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function mostrarConsultaAbajo() {
+            const nombre = document.getElementById("nombreContacto").value.trim();
+            const apellido = document.getElementById("apellidoContacto").value.trim();
+            const telefono = document.getElementById("telefonoContacto").value.trim();
+            const consulta = document.getElementById("mensajeContacto").value.trim();
+
+            const nombreCompleto = `${nombre} ${apellido}`.trim() || "No especificado";
+            document.getElementById("outNombreApellido").textContent = nombreCompleto;
+            document.getElementById("outTelefono").textContent = telefono || "No especificado";
+            document.getElementById("outConsulta").textContent = consulta || "Sin consulta escrita";
+
+            const seccionResumen = document.getElementById("resumen-consulta");
+            seccionResumen.hidden = false;
+            seccionResumen.scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
